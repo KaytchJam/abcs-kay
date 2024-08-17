@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/abcs-website
 /.pnp
 .pnp.js
 
