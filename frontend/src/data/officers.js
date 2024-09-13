@@ -10,7 +10,8 @@ import jerry from '../assets/jerry.jpg';
 import afolabi from '../assets/afolabi.jpg';
 import kaylan from '../assets/kaylan.jpg';
 import gary from '../assets/gary.jpg';
-// import kenny from '../assets/kenny.jpg';
+import kenna from '../assets/kenna.jpg';
+import nick from '../assets/nick.jpg';
 
 export const officers = [
   {
@@ -98,10 +99,17 @@ export const officers = [
     imagePath: gary
   },
   {
-    name: "Kenny Nyuga",
+    name: "Kenna Nyuga",
     position: "Community Service",
     email: "kennanyuga@gmail.com",
     linkedin: "https://www.linkedin.com/in/knyuga/",
-    imagePath: gary
+    imagePath: kenna
+  },
+  {
+    name: "Nicolas Selesi",
+    position: "Public Relations",
+    email: "nick.selesi@gmail.com",
+    linkedin: "https://www.linkedin.com/in/nicholas-selesi-66075525a/",
+    imagePath: nick
   }
 ];

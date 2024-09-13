@@ -103,10 +103,18 @@ const HomePage = () => {
           {officers.map((officer) => (
             <Col md={3} key={officer.position} className="mb-4">
               <Card className="text-center h-100 shadow-sm">
-                <Card.Img variant="top" src={officer.imagePath}/>
+                <Card.Img variant="top"
+                src={officer.imagePath}
+                style={{
+                  width: '100%',
+                  height: '250px', // Set a fixed height
+                  objectFit: 'cover', // This will crop the image to fit while maintaining aspect ratio
+                  objectPosition: 'center' // This centers the image
+                }}
+                />
                 <Card.Body>
-                  <Card.Title>{officer.position}</Card.Title>
-                  <Card.Text>{officer.name}</Card.Text>
+                  <Card.Title>{officer.name}</Card.Title>
+                  <Card.Text>{officer.position}</Card.Text>
                   <div className="social-icons">
                     <a href={officer.linkedin} target="_blank" rel="noopener noreferrer" className="me-2">
                       <FaLinkedinIn />
