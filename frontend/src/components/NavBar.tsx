@@ -4,7 +4,7 @@ import logo from '../assets/abcs.jpeg'; // Make sure to import your logo
 
 function NavBar() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="py-3">
+    <Navbar variant='dark' expand="lg" fixed="top" className="nav py-3">
       <Container>
         <Navbar.Brand href="/home">
           <img
@@ -12,7 +12,7 @@ function NavBar() {
             src={logo}
             width="60"
             height="30"
-            className="d-inline-block align-top"
+            className="logo-img d-inline-block align-top"
           />
           {' Texas ABCS'}
         </Navbar.Brand>
