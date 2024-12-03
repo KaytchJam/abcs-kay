@@ -5,8 +5,9 @@ import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import AboutPage from './components/AboutPage';
 import SponsorsPage from './components/SponsorsPage';
+import MembersPage from './components/MembersPage';
 import CalendarPage from './components/CalendarPage';
-
+        
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/about" element={<AboutPage/>} />
         <Route path="/calendar" element={<CalendarPage/>} />
         <Route path="/sponsors" element={<SponsorsPage/>} />
+        <Route path="/members" element={<MembersPage/>} />
       </Routes>
     </BrowserRouter>
   );
