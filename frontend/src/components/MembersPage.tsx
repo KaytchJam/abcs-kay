@@ -26,7 +26,7 @@ const MembersPage = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await fetch('http://localhost:9000/members');
+        const response = await fetch('http://18.116.76.42:9000/members');
         const data: MembersResponse = await response.json();
         if (data.members) {
           setMembers(data.members);
