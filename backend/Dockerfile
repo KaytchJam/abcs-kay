@@ -7,4 +7,7 @@ WORKDIR /back-end
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . ./
-CMD ["python", "api.py"]
+
+EXPOSE 9000
+
+CMD ["gunicorn","--config", "gunicorn_config.py", "api:app"]
