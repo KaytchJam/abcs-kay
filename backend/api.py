@@ -3,7 +3,6 @@ import requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-ec2_api = 'http://18.116.76.42:3000/groups/0/'
 CORS(app)
 ec2_api = 'http://18.116.76.42:3000/groups/0/'
 
