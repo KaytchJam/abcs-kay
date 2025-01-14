@@ -3,11 +3,11 @@ import requests
 from flask_cors import CORS
 import boto3
 
-officers = ['boueny', 'clint', 'essie', 'gary', 'isaac', 'jean-claude', 'jerry', 'kenna', 'kevin', 'mick', 'robert']
+officers = ['group', 'boueny', 'clint', 'essie', 'gary', 'isaac', 'jean-claude', 'jerry', 'kenna', 'kevin', 'mick', 'robert']
 
 app = Flask(__name__)
 CORS(app)
-ec2_api = 'http://18.116.76.42:3000/groups/0/'
+logger_api = 'http://18.116.76.42:3000/groups/0/'
 s3_client = boto3.client('s3')
 
 @app.route("/")
@@ -16,7 +16,7 @@ def hello_world():
 
 @app.route("/members")
 def members():
-  response = requests.get(ec2_api)
+  response = requests.get(logger_api)
   if response.status_code == 200:
     json = response.json()
     members = json['members']
