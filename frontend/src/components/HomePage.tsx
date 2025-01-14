@@ -29,12 +29,9 @@ const HomePage = () => {
               <p className="lead mb-4">
                 Empowering the next generation of diverse technologists at The University of Texas at Austin
               </p>
-              <Button variant="dark" size="lg" className="rounded-pill home-but px-5 border me-3">Join Us</Button>
-              <Button variant="dark" size="lg" className='home-but rounded-pill px-5'>Learn More</Button>
+              <Button variant="dark" size="lg" className="rounded-pill home-but px-5 border me-3" href='#contact'>Join Us</Button>
+              <Button variant="dark" size="lg" className='home-but rounded-pill px-5' href='https://linktr.ee/utcsabcs'>Our Linktree!</Button>
             </Col>
-            {/* <Col lg={6} className="mt-5 mt-lg-0">
-              <Image src={photo} fluid className="rounded-3 shadow-lg" />
-            </Col> */}
           </Row>
         </Container>
       </section>
@@ -88,6 +85,16 @@ const HomePage = () => {
       </section>
 
       <section id="testimonials" className="py-5 member-testimony-bg text-white">
+        <style>
+          {`
+            .carousel .carousel-indicators {
+              bottom: -50px;
+            }
+            .carousel {
+              padding-bottom: 60px;
+            }
+          `}
+        </style>
         <Container>
           <h2 className="subheading text-center mb-5">What Our Members Say</h2>
           <Carousel>
@@ -157,9 +164,9 @@ const HomePage = () => {
                 <a href="mailto:utcsabcs@gmail.com" className="text-white">utcsabcs@gmail.com</a>
               </p>
               <div className="social-icons fs-3">
-                <FaTwitter className="me-3" />
-                <FaInstagram className="me-3" />
-                <FaLinkedinIn />
+                <a href='https://x.com/TexasABCS' style={{ color: 'inherit' }}><FaTwitter className="me-3" /></a>
+                <a href='https://www.instagram.com/texas_abcs/' style={{ color: 'inherit' }}><FaInstagram className="me-3"/></a>
+                <a href='https://www.linkedin.com/company/texas-abcs/posts/?feedView=all' style={{ color: 'inherit' }}><FaLinkedinIn /></a>
               </div>
             </Col>
             <Col lg={6} className="mt-5 mt-lg-0">
