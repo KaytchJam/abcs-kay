@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import requests
 from flask_cors import CORS
 import boto3
@@ -53,12 +53,14 @@ def generate_presigned_url(bucket_name, object_key, expiration_seconds=3600):
   
 @app.route("/images")
 def images():
-  response = {}
 
-  for name in officers:
-    response[name] = generate_presigned_url('texasabcs', 'officer-pictures/' + name + '.jpg')
+  #handle null values
+  name = request.args.get('name')
+  folder = request.args.get('folder')
+  if folder:
+    folder = folder + '/'
 
-  return response
+  return generate_presigned_url('texasabcs', folder + name + '.jpg')
   
 if __name__ == "__main__":
     app.run(debug=True, port=9000)
