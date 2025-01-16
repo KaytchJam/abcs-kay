@@ -21,16 +21,13 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchImageUrls = async () => {
-      const urls: { [key: string]: string } = {};
-      for (const officer of officers) {
-        try {
-          const response = await axios.get(`https://api.texasabcs.com/images?name=${officer.image}&folder=officer-pictures`);
-          urls[officer.image] = response.data;
-        } catch (error) {
-          console.error(`Error fetching image for ${officer.image}:`, error);
-        }
+      try {
+        const response = await axios.get(`https://api.texasabcs.com/images?folder=home`);
+        const urls: { [key: string]: string } = response.data;
+        setImageUrls(urls);
+      } catch (error) {
+        console.error(`Error fetching images for page`, error);
       }
-      setImageUrls(urls);
     };
 
     fetchImageUrls();
@@ -40,21 +37,21 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <NavBar></NavBar>
-      <section className="hero vh-100 d-flex align-items-center">
-        <Container className='homeheader'>
-          <Row className="align-items-center">
-            <Col lg={6} className="text-center text-lg-start">
-              <h1 className=" display-3 fw-bold mb-4">
-               <span className='minitext'>We're the </span> <br/> Association of <span className="text-success">Black</span> Computer Scientists
-              </h1>
-              <p className="lead mb-4">
-                Empowering the next generation of diverse technologists at The University of Texas at Austin
-              </p>
-              <Button variant="dark" size="lg" className="rounded-pill home-but px-5 border me-3" href='#contact'>Join Us</Button>
-              <Button variant="dark" size="lg" className='home-but rounded-pill px-5' href='https://linktr.ee/utcsabcs'>Our Linktree!</Button>
-            </Col>
-          </Row>
-        </Container>
+      <section className="hero vh-100 d-flex align-items-center" style={{ backgroundImage: `url(${imageUrls['group']})`}}>
+      <Container className='homeheader'>
+        <Row className="align-items-center">
+        <Col lg={6} className="text-center text-lg-start">
+          <h1 className=" display-3 fw-bold mb-4">
+           <span className='minitext'>We're the </span> <br/> Association of <span className="text-success">Black</span> Computer Scientists
+          </h1>
+          <p className="lead mb-4">
+          Empowering the next generation of diverse technologists at The University of Texas at Austin
+          </p>
+          <Button variant="dark" size="lg" className="rounded-pill home-but px-5 border me-3" href='#contact'>Join Us</Button>
+          <Button variant="dark" size="lg" className='home-but rounded-pill px-5' href='https://linktr.ee/utcsabcs'>Our Linktree!</Button>
+        </Col>
+        </Row>
+      </Container>
       </section>
 
       <section id="about" className="py-5 bg-light">
@@ -73,7 +70,7 @@ const HomePage = () => {
               </ul>
             </Col>
             <Col md={6}>
-              <Image style={{ objectFit: 'cover', borderRadius: '15px', }} src={missionphoto} fluid className="rounded-3 shadow" />
+              <Image style={{ objectFit: 'cover', borderRadius: '15px', }} src={imageUrls['mission']} fluid className="rounded-3 shadow" />
             </Col>
           </Row>
         </Container>
@@ -86,7 +83,7 @@ const HomePage = () => {
             {['Corporate', 'Outreach', 'Social'].map((initiative) => (
               <Col md={4} key={initiative} className="mb-4">
                 <Card style={{ border: 'none', outline: 'none'}}  className="h-100">
-                  <Card.Img variant="top" className='img-card rounded' style={{ objectFit: 'cover', borderRadius: '15px', }} src={initiative === 'Corporate' ? corporateimg : initiative === 'Outreach' ? outreachimg : socialimg} />
+                  <Card.Img variant="top" className='img-card rounded' style={{ objectFit: 'cover', borderRadius: '15px', }} src={initiative === 'Corporate' ? imageUrls['corporate'] : initiative === 'Outreach' ? imageUrls['outreach'] : imageUrls['social']} />
                   <Card.Body className='py-4 mx-5'>
                     <Card.Title className='fira-sans-bold text-center' style={{ fontSize: '2rem' }}>{initiative}</Card.Title>
                     <Card.Text className='text-center' style={{ fontSize: '1 rem' }}>
@@ -105,7 +102,7 @@ const HomePage = () => {
         </Container>
       </section>
 
-      <section id="testimonials" className="py-5 member-testimony-bg text-white">
+      <section id="testimonials" className="py-5 member-testimony-bg text-white" style={{ backgroundImage: `url(${imageUrls['testimony']})`}}>
         <style>
           {`
             .carousel .carousel-indicators {
@@ -191,7 +188,7 @@ const HomePage = () => {
               </div>
             </Col>
             <Col lg={6} className="mt-5 mt-lg-0">
-              <Image src={getintouchimg} className="rounded-3 shadow img-card" />
+              <Image src={imageUrls['contact']} className="rounded-3 shadow img-card" />
             </Col>
           </Row>
         </Container>
