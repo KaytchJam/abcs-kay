@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import { Container, Row, Col, Image, Button, Card, Carousel } from 'react-bootstrap';
 import { FaLinkedinIn, FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import NavBar from "./NavBar";
@@ -16,6 +17,26 @@ import getintouchimg from "../assets/get-in-touch-img.jpg";
 </style>
 
 const HomePage = () => {
+  const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
+
+  useEffect(() => {
+    const fetchImageUrls = async () => {
+      const urls: { [key: string]: string } = {};
+      for (const officer of officers) {
+        try {
+          const response = await axios.get(`https://api.texasabcs.com/images?name=${officer.image}&folder=officer-pictures`);
+          urls[officer.image] = response.data;
+        } catch (error) {
+          console.error(`Error fetching image for ${officer.image}:`, error);
+        }
+      }
+      setImageUrls(urls);
+    };
+
+    fetchImageUrls();
+  }, []);
+
+
   return (
     <div className="home-page">
       <NavBar></NavBar>
@@ -122,14 +143,14 @@ const HomePage = () => {
             <Col md={3} key={officer.position} className="mb-4">
               <Card style={{ border: 'none', outline: 'none',}} className="≈officer-card text-center h-100 ">
               <Card.Img variant="top"
-                src={officer.imagePath}
+                src={imageUrls[officer.image] || officer.image}
                 style={{
                   borderColor: 'white',
                   borderRadius: '15px',
                   width: '100%',
                   height: '250px', // Set a fixed height
                   objectFit: 'cover', // This will crop the image to fit while maintaining aspect ratio
-                  objectPosition: 'center' // This centers the image
+                  objectPosition: 'center top' // This centers the image
                 }}
                 />
                 <Card.Body style={{ outline: 'none' }}>

@@ -55,6 +55,9 @@ def generate_presigned_url(bucket_name, object_key, expiration_seconds=3600):
 @app.route("/images")
 def images():
 
+  #todo: possibly sort s3 folders by each website page & pass in folder as only parameter
+  #then give the image name:image url as response
+
   #handle null values
   folder = request.args.get('folder')
   if folder:
