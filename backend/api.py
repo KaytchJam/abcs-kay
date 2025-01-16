@@ -3,6 +3,7 @@ import requests
 from flask_cors import CORS
 import boto3
 from botocore.client import Config
+import re
 
 officers = ['group', 'boueny', 'clint', 'essie', 'gary', 'isaac', 'jean-claude', 'jerry', 'kenna', 'kevin', 'mick', 'robert']
 
@@ -42,7 +43,7 @@ def members():
   else:
     return {"error": "Failed to fetch members"}
   
-
+ 
 def generate_presigned_url(bucket_name, object_key, expiration_seconds=3600):
 
   return s3_client.generate_presigned_url(
@@ -55,12 +56,23 @@ def generate_presigned_url(bucket_name, object_key, expiration_seconds=3600):
 def images():
 
   #handle null values
-  name = request.args.get('name')
   folder = request.args.get('folder')
   if folder:
     folder = folder + '/'
 
-  return generate_presigned_url('texasabcs', folder + name + '.jpg')
+  paginator = s3_client.get_paginator('list_objects_v2')
+  pages = paginator.paginate(Bucket='texasabcs', Prefix=folder)
+
+  response = {}
+
+  for page in pages:
+    if 'Contents' in page:
+      for obj in page['Contents']:
+        name = re.split('/|\\.', obj['Key'])[1]
+        if name != '':
+          response[name] = generate_presigned_url('texasabcs', obj['Key'])
+              
+  return response
   
 if __name__ == "__main__":
     app.run(debug=True, port=9000)
