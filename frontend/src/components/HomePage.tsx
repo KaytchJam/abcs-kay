@@ -4,13 +4,7 @@ import { Container, Row, Col, Image, Button, Card, Carousel } from 'react-bootst
 import { FaLinkedinIn, FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-
-import missionphoto from "../assets/MissionPhoto.jpg";
 import { officers } from '../data/officers';
-import corporateimg from "../assets/corporate-img.jpg";
-import outreachimg from "../assets/outreach-img.jpeg";
-import socialimg from "../assets/social-img.jpg";
-import getintouchimg from "../assets/get-in-touch-img.jpg";
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
