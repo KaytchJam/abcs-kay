@@ -46,7 +46,7 @@ const CalendarPage = () => {
                   <p className="mb-4">
                     Subscribe to our calendar to never miss an ABCS event!
                   </p>
-                  <Button 
+                  <Button href='https://calendar.google.com/calendar/u/2?cid=ZTJjNTJlYzcwYzg0NzYyZWNlYjI4MmE0NGE3OTljMWU5ODA3ZjA5M2ZkMmU2ZGNmZThjN2ViNGM0YmM1MGJiYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t'
                     variant="dark" 
                     className="rounded-pill px-5"
                   >
