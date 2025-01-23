@@ -12,7 +12,6 @@ code {
 }
 
 .hero {
-  background-image: url('./assets/GroupPhoto.jpg');
   background-size: cover;
   background-position: center;
   font-family: 'Fira Sans';
@@ -109,7 +108,6 @@ code {
 
 
 .member-testimony-bg {
-  background-image: url('./assets/member-testimony-img.jpg');
   background-size: cover;
   background-position: center;
   font-family: 'Fira Sans';

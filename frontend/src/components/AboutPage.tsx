@@ -3,8 +3,6 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import NavBar from './NavBar'; // Adjust the path as needed
 import Footer from './Footer';
 
-import corporateimg from "../assets/corporate-img.jpg";
-
 function AboutPage() {
   return (
     <div className="sponsors-page">
@@ -28,12 +26,6 @@ function AboutPage() {
           <Row>
             <Col md={6} className="mb-4">
               <Card style={{ border: 'none', outline: 'none'}} className="h-100">
-                <Card.Img 
-                  variant="top" 
-                  src={corporateimg}
-                  alt="corporate image"
-                  className="w-100"
-                />
               </Card>
             </Col>
           </Row>

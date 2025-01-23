@@ -1,38 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import NavBar from './NavBar'; // Adjust the path as needed
 import Footer from './Footer';
+import axios from 'axios';
 
-import atlassian from '../assets/sponsors/Atlassian-Logo.png';
-import bloomberg from '../assets/sponsors/bloomberg.png';
-import bp from '../assets/sponsors/bp.png';
-import capitalOne from '../assets/sponsors/capitalone.png';
-import chevron from '../assets/sponsors/chevron.png';
-import citadel from '../assets/sponsors/citadel.png';
-import deShaw from '../assets/sponsors/deshaw.png';
-import deloitte from '../assets/sponsors/deloitte.png';
-import draftKings from '../assets/sponsors/draftkings.png';
-import goldmanSachs from '../assets/sponsors/goldmansachs.png';
-import google from '../assets/sponsors/google.png';
-import heb from '../assets/sponsors/heb.png';
-
-const sponsors = [
-  { name: 'Atlassian', logo: atlassian },
-  { name: 'Bloomberg', logo: bloomberg },
-  { name: 'BP', logo: bp },
-  { name: 'Capital One', logo: capitalOne },
-  { name: 'Chevron', logo: chevron },
-  { name: 'Citadel', logo: citadel },
-  { name: 'D.E. Shaw Group', logo: deShaw },
-  { name: 'Deloitte', logo: deloitte },
-  { name: 'Draft Kings', logo: draftKings },
-  { name: 'Goldman Sachs', logo: goldmanSachs },
-  { name: 'Google', logo: google },
-  { name: 'H-E-B', logo: heb },
-  // Add more sponsors as needed
-];
 
 function Sponsors() {
+  const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
+
+  useEffect(() => {
+    const fetchImageUrls = async () => {
+      try {
+        const response = await axios.get(`https://api.texasabcs.com/images?folder=sponsors`);
+        const urls: { [key: string]: string } = response.data;
+        setImageUrls(urls);
+      } catch (error) {
+        console.error(`Error fetching images for page`, error);
+      }
+    };
+
+    fetchImageUrls();
+  }, []);
+
+  const sponsors = [
+    { name: 'Atlassian', logo: imageUrls['atlassian'] },
+    { name: 'Bloomberg', logo: imageUrls['bloomberg'] },
+    { name: 'BP', logo: imageUrls['bp'] },
+    { name: 'Capital One', logo: imageUrls['capitalone'] },
+    { name: 'Chevron', logo: imageUrls['chevron'] },
+    { name: 'Citadel', logo: imageUrls['citadel'] },
+    { name: 'D.E. Shaw Group', logo: imageUrls['deshaw'] },
+    { name: 'Deloitte', logo: imageUrls['deloitte'] },
+    { name: 'Draft Kings', logo: imageUrls['draftkings'] },
+    { name: 'Goldman Sachs', logo: imageUrls['goldmansachs'] },
+    { name: 'Google', logo: imageUrls['google']},
+    { name: 'H-E-B', logo: imageUrls['heb'] },
+  ];
+
   return (
     <div className="sponsors-page">
       <NavBar />
