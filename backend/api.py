@@ -5,8 +5,6 @@ import boto3
 from botocore.client import Config
 import re
 
-officers = ['group', 'boueny', 'clint', 'essie', 'gary', 'isaac', 'jean-claude', 'jerry', 'kenna', 'kevin', 'mick', 'robert']
-
 app = Flask(__name__)
 CORS(app)
 logger_api = 'http://18.116.76.42:3000/groups/0/'

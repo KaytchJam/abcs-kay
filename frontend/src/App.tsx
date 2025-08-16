@@ -20,7 +20,7 @@ function App() {
         <Route path="/gallery" element={<GalleryPage/>} />
         <Route path="/calendar" element={<CalendarPage/>} />
         <Route path="/sponsors" element={<SponsorsPage/>} />
-        <Route path="/members" element={<MembersPage/>} />
+        {/* <Route path="/members" element={<MembersPage/>} /> */}
       </Routes>
     </BrowserRouter>
   );
