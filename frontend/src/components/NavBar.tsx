@@ -24,7 +24,7 @@ function NavBar() {
             <Nav.Link href="/gallery">Gallery</Nav.Link>
             <Nav.Link href="/calendar">Calendar</Nav.Link>
             <Nav.Link href="/sponsors">Sponsors</Nav.Link>
-            <Nav.Link href="/members">Members</Nav.Link>
+            {/* <Nav.Link href="/members">Members</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

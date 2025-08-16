@@ -8,7 +8,7 @@ export const officers = [
   },
   {
     name: "Robert Tezock",
-    position: "Vice President",
+    position: "Treasurer",
     email: "tezock.robert@gmail.com",
     linkedin: "https://www.linkedin.com/in/tezock",
     image: 'robert'
