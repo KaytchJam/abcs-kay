@@ -11,7 +11,7 @@ function Sponsors() {
   useEffect(() => {
     const fetchImageUrls = async () => {
       try {
-        const response = await axios.get(`https://api.texasabcs.com/images?folder=sponsors`);
+        const response = await axios.get(`https://h2mww7p6wa.execute-api.us-east-2.amazonaws.com/images?folder=sponsors`);
         const urls: { [key: string]: string } = response.data;
         setImageUrls(urls);
       } catch (error) {

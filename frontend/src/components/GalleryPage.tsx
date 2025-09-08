@@ -14,7 +14,7 @@ const GalleryPage = () => {
   useEffect(() => {
     const fetchImageUrls = async () => {
       try {
-        const response = await axios.get(`https://api.texasabcs.com/images?folder=gallery`);
+        const response = await axios.get(`https://h2mww7p6wa.execute-api.us-east-2.amazonaws.com/images?folder=gallery`);
         const urls = Object.values(response.data) as string[];
         setImageUrls(urls);
       } catch (error) {
